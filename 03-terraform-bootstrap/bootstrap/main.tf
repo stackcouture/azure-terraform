@@ -1,3 +1,5 @@
+data "azurerm_client_config" "current" {}
+
 resource "random_string" "suffix" {
   length  = 8
   upper   = false
@@ -22,7 +24,7 @@ resource "azurerm_storage_account" "tfstate" {
   https_traffic_only_enabled      = true
   allow_nested_items_to_be_public = false
   shared_access_key_enabled       = false
-  public_network_access_enabled   = false
+  public_network_access_enabled   = true
 
   tags = {
     Environment = "dev"
@@ -34,4 +36,10 @@ resource "azurerm_storage_container" "tfstate" {
   name                  = "tfstate"
   storage_account_id    = azurerm_storage_account.tfstate.id
   container_access_type = "private"
+}
+
+resource "azurerm_role_assignment" "tfstate_blob_access" {
+  scope                = azurerm_storage_account.tfstate.id
+  role_definition_name = "Storage Blob Data Contributor"
+  principal_id         = data.azurerm_client_config.current.object_id
 }

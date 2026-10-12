@@ -1,0 +1,4 @@
+
+output "resource_group_name" {
+  value = module.resource_group.resource_group_name # azurerm_resource_group.tfstate.name
+}
