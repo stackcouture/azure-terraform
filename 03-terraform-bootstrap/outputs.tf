@@ -8,5 +8,5 @@ output "storage_account_name" {
 }
 
 output "container_name" {
-  value = module.bootstrap.container_name  # azurerm_storage_container.tfstate.name
+  value = module.bootstrap.container_name # azurerm_storage_container.tfstate.name
 }
