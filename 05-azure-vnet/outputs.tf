@@ -10,3 +10,8 @@ output "vnet_id" {
 output "vnet_guid" {
   value = module.vnet.vnet_guid
 }
+
+# Web Subnet Id 
+output "websubnet_id" {
+  value = module.subnet.web_subnet_id
+}

@@ -29,16 +29,16 @@ variable "vnet_address_space" {
   description = "Virtual Netowrk Address Space"
 }
 
-# # Web Subnet 
-# variable "web_subnet_name" {
-#   type        = string
-#   description = "Virtual Network Web Subnet name"
-# }
+# Web Subnet 
+variable "web_subnet_name" {
+  type        = string
+  description = "Virtual Network Web Subnet name"
+}
 
-# variable "web_subnet_address" {
-#   type        = string
-#   description = "Virutal Network Web Subnet Address"
-# }
+variable "web_subnet_address" {
+  type        = list(string)
+  description = "Virutal Network Web Subnet Address"
+}
 
 # # App Subnet 
 # variable "app_subnet_name" {
