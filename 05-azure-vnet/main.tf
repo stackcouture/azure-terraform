@@ -42,4 +42,7 @@ module "nsg" {
 
   app_subnet_id   = module.subnet.app_subnet_id
   app_subnet_name = var.app_subnet_name
+
+  db_subnet_id   = module.subnet.db_subnet_id
+  db_subnet_name = var.db_subnet_name
 }

@@ -54,3 +54,31 @@ resource "azurerm_network_security_rule" "app_nsg_rule_inbound" {
   resource_group_name         = var.rg_group_name
   network_security_group_name = azurerm_network_security_group.app_subnet_nsg.name #  "${var.app_subnet_name}-nsg"
 }
+
+# DB Subnet Network Security Group
+resource "azurerm_network_security_group" "db_subnet_nsg" {
+  name                = "${var.db_subnet_name}-nsg"
+  location            = var.rg_location
+  resource_group_name = var.rg_group_name
+}
+
+resource "azurerm_subnet_network_security_group_association" "db_subnet_nsg_association" {
+  depends_on                = [azurerm_network_security_rule.db_nsg_rule_inbound]
+  subnet_id                 = var.db_subnet_id
+  network_security_group_id = azurerm_network_security_group.db_subnet_nsg.id
+}
+
+resource "azurerm_network_security_rule" "db_nsg_rule_inbound" {
+  for_each                    = local.db_inbound_ports_map
+  name                        = "DB-Rule-Port-${each.value}"
+  priority                    = each.key
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = each.value
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name         = var.rg_group_name
+  network_security_group_name = azurerm_network_security_group.db_subnet_nsg.name #  "${var.app_subnet_name}-nsg"
+}

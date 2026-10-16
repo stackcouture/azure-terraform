@@ -28,3 +28,14 @@ variable "app_subnet_id" {
   type        = string
   description = "App Subnet ID"
 }
+
+# DB Subnet 
+variable "db_subnet_name" {
+  type        = string
+  description = "DB Subnet Name"
+}
+
+variable "db_subnet_id" {
+  type        = string
+  description = "DB Subnet ID"
+}
