@@ -1,3 +1,4 @@
+# Web Subnet
 resource "azurerm_subnet" "web_subnet" {
   name                 = "${var.vnet_name}-${var.web_subnet_name}"
   resource_group_name  = var.rg_name
@@ -12,3 +13,12 @@ resource "azurerm_subnet" "app_subnet" {
   virtual_network_name = var.vnet_name
   address_prefixes     = var.app_subnet_address
 }
+
+# DB Subnet
+resource "azurerm_subnet" "db_subnet" {
+  name                 = "${var.vnet_name}-${var.db_subnet_name}"
+  resource_group_name  = var.rg_name
+  virtual_network_name = var.vnet_name
+  address_prefixes     = var.db_subnet_address
+}
+

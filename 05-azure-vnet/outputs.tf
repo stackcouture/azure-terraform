@@ -25,3 +25,9 @@ output "appsubnet_id" {
   description = "App Subnet ID"
   value       = module.subnet.app_subnet_id
 }
+
+# App Subnet ID
+output "dbsubnet_id" {
+  description = "DB Subnet ID"
+  value       = module.subnet.db_subnet_id
+}

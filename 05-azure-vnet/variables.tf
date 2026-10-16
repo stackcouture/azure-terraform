@@ -51,17 +51,17 @@ variable "app_subnet_address" {
   description = "App Subnet Address"
 }
 
-# # Database Subnet Name
-# variable "db_subnet_name" {
-#   type        = string
-#   description = "Virtual Network Database Subnet Name"
-# }
+# Database Subnet Name
+variable "db_subnet_name" {
+  type        = string
+  description = "Virtual Network Database Subnet Name"
+}
 
-# # Database Subnet Address Space
-# variable "db_subnet_address" {
-#   type        = list(string)
-#   description = "Virtual Network Database Subnet Address Spaces"
-# }
+# Database Subnet Address Space
+variable "db_subnet_address" {
+  type        = list(string)
+  description = "Virtual Network Database Subnet Address Spaces"
+}
 
 
 # # Bastion / Management Subnet Name
