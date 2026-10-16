@@ -32,4 +32,7 @@ module "nsg" {
   rg_group_name   = module.resource_group.resource_group_name
   subnet_id       = module.subnet.web_subnet_id
   web_subnet_name = var.web_subnet_name
+
+  app_subnet_id   = module.subnet.app_subnet_id
+  app_subnet_name = var.app_subnet_name
 }

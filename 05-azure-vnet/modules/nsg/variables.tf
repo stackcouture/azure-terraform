@@ -17,3 +17,14 @@ variable "web_subnet_name" {
   type        = string
   description = "Web Subnet Name"
 }
+
+# App Subnet Network Security Group 
+variable "app_subnet_name" {
+  type        = string
+  description = "App Subnet Name"
+}
+
+variable "app_subnet_id" {
+  type        = string
+  description = "App Subnet ID"
+}
