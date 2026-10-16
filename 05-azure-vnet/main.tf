@@ -49,4 +49,8 @@ module "nsg" {
 
   db_subnet_id   = module.subnet.db_subnet_id
   db_subnet_name = var.db_subnet_name
+
+  bastion_subnet_id   = module.subnet.bastion_subnet_id
+  bastion_subnet_name = var.bastion_subnet_name
+
 }

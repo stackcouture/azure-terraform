@@ -29,7 +29,7 @@ variable "app_subnet_id" {
   description = "App Subnet ID"
 }
 
-# DB Subnet 
+# DB NSG 
 variable "db_subnet_name" {
   type        = string
   description = "DB Subnet Name"
@@ -38,4 +38,15 @@ variable "db_subnet_name" {
 variable "db_subnet_id" {
   type        = string
   description = "DB Subnet ID"
+}
+
+# Bastion NSG
+variable "bastion_subnet_name" {
+  type        = string
+  description = "Virtual Network Bastion Subnet Name"
+}
+
+variable "bastion_subnet_id" {
+  type        = string
+  description = "Bastion Subnet ID"
 }

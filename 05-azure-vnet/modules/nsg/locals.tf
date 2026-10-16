@@ -23,3 +23,10 @@ locals {
     "120" : "5432"
   }
 }
+
+locals {
+  bastion_inbound_ports_map = {
+    "100" : "22",
+    "110" : "3389"
+  }
+}
