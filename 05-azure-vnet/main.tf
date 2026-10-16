@@ -19,7 +19,11 @@ module "subnet" {
   web_subnet_name    = var.web_subnet_name
   web_subnet_address = var.web_subnet_address
   rg_name            = module.resource_group.resource_group_name
-  vnet_name          = "${local.resource_name_prefix}-${var.vnet_name}" # var.vnet_name
+  vnet_name          = "${local.resource_name_prefix}-${var.vnet_name}"
+
+  # App Subnet 
+  app_subnet_name    = var.app_subnet_name
+  app_subnet_address = var.app_subnet_address
 }
 
 module "nsg" {

@@ -40,17 +40,16 @@ variable "web_subnet_address" {
   description = "Virutal Network Web Subnet Address"
 }
 
-# # App Subnet 
-# variable "app_subnet_name" {
-#   type        = string
-#   description = "Virtual Network App Subnet Name"
-# }
+# App Subnet Varaibles
+variable "app_subnet_name" {
+  type        = string
+  description = "App Subnet name"
+}
 
-# # App Subnet Address Space
-# variable "app_subnet_address" {
-#   type        = list(string)
-#   description = "Virtual Network App Subnet Address Spaces"
-# }
+variable "app_subnet_address" {
+  type        = list(string)
+  description = "App Subnet Address"
+}
 
 # # Database Subnet Name
 # variable "db_subnet_name" {
