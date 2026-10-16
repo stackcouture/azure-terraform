@@ -21,3 +21,11 @@ module "subnet" {
   rg_name            = module.resource_group.resource_group_name
   vnet_name          = "${local.resource_name_prefix}-${var.vnet_name}" # var.vnet_name
 }
+
+module "nsg" {
+  source          = "./modules/nsg"
+  rg_location     = module.resource_group.resource_group_location_name
+  rg_group_name   = module.resource_group.resource_group_name
+  subnet_id       = module.subnet.web_subnet_id
+  web_subnet_name = var.web_subnet_name
+}
