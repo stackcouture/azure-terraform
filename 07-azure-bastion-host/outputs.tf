@@ -13,3 +13,26 @@ output "vnet_guid" {
   description = "Virtual Network GUID"
   value       = module.vnet.vnet_guid
 }
+
+# Web Subnet Id 
+output "websubnet_id" {
+  description = "Web Subnet ID"
+  value       = module.subnet.web_subnet_id
+}
+
+# App Subnet ID
+output "appsubnet_id" {
+  description = "App Subnet ID"
+  value       = module.subnet.app_subnet_id
+}
+
+# App Subnet ID
+output "dbsubnet_id" {
+  description = "DB Subnet ID"
+  value       = module.subnet.db_subnet_id
+}
+
+output "bastion_subnet_id" {
+  description = "Bastion Subnet ID"
+  value       = module.subnet.bastion_subnet_id
+}
