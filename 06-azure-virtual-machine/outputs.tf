@@ -36,3 +36,14 @@ output "bastion_subnet_id" {
   description = "Bastion Subnet ID"
   value       = module.subnet.bastion_subnet_id
 }
+
+# NSG Output 
+output "web_subnet_nsg_name" {
+  description = "Web Subnet NSG name"
+  value       = module.nsg.web_subnet_nsg_name
+}
+
+output "web_subnet_nsg_id" {
+  description = "Web Subnet NSG ID"
+  value       = module.nsg.web_subnet_nsg_id
+}
