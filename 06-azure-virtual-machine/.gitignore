@@ -4,3 +4,4 @@ terraform.tfvars
 tfplan
 terraform.tfstate
 terraform.tfstate.backup
+ssh-keys*
