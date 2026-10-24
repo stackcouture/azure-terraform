@@ -5,3 +5,5 @@ tfplan
 terraform.tfstate
 terraform.tfstate.backup
 ssh-keys*
+bastion-*
+terraform-state-*

@@ -75,3 +75,11 @@ module "bastion_host_vm" {
   rg_group_name        = module.resource_group.resource_group_name
   bastion_subnet_id    = module.subnet.bastion_subnet_id
 }
+
+module "bastion_service" {
+  source                    = "./modules/bastion-service"
+  rg_location               = module.resource_group.resource_group_location_name
+  rg_group_name             = module.resource_group.resource_group_name
+  resource_name_prefix      = local.resource_name_prefix
+  bastion_service_subnet_id = module.subnet.bastion_service_subnet_id
+}

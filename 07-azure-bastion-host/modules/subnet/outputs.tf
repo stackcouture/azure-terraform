@@ -13,3 +13,7 @@ output "db_subnet_id" {
 output "bastion_subnet_id" {
   value = azurerm_subnet.bastion_subnet.id
 }
+
+output "bastion_service_subnet_id" {
+  value = azurerm_subnet.bastion_service_subnet.id
+}
