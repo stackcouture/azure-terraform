@@ -45,6 +45,72 @@ The project includes the following Azure resources:
 
 *The directory structure above is the intended modular layout; adjust it to match the modules actually present in your repository.*
 
+---
+## Prerequisite: Generate SSH Keys for Azure Linux Virtual Machine
+
+Before deploying the Azure Linux Virtual Machine, generate an SSH key pair. The public key will be configured on the VM, and the private key will be used to connect securely.
+
+### 1. Create the SSH Keys Directory
+
+```bash
+cd terraform-manifests/
+mkdir -p ssh-keys
+cd ssh-keys
+```
+
+### 2. Generate the SSH Key Pair
+
+```bash
+ssh-keygen \
+  -m PEM \
+  -t rsa \
+  -b 4096 \
+  -C "azureuser@myserver" \
+  -f terraform-azure.pem
+```
+
+When prompted, enter a passphrase or press Enter to leave it empty.
+
+**Important:** If you configure a passphrase, you may need to enter it when using the private key to connect to the VM, unless an SSH agent has the key loaded.
+
+### 3. Verify the Generated Files
+
+```bash
+ls -lrt
+```
+
+The command generates two files:
+
+| File | Purpose |
+|---|---|
+| `terraform-azure.pem` | Private key used to authenticate to the VM |
+| `terraform-azure.pem.pub` | Public key installed on the VM |
+
+Rename the public key to `terraform-azure.pub` if required by your Terraform configuration:
+
+```bash
+mv terraform-azure.pem.pub terraform-azure.pub
+```
+
+### 4. Set Private Key Permissions
+
+Restrict access to the private key:
+
+```bash
+chmod 400 terraform-azure.pem
+```
+
+SSH requires the private key to be protected from access by other users.
+
+### 5. Security Notes
+
+- Never share or commit the private key (`terraform-azure.pem`) to GitHub.
+- Add `ssh-keys/` to your `.gitignore` file.
+- Keep the private key secure and accessible only to the authorized user.
+- Configure the public key path in your Terraform VM module.
+- Store a secure backup of the private key if needed; it cannot be regenerated from the public key.
+
+---
 ## Infrastructure Configuration
 
 ### Step 1: Resource Group
