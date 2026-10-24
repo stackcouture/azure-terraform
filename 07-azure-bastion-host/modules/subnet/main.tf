@@ -29,3 +29,11 @@ resource "azurerm_subnet" "bastion_subnet" {
   virtual_network_name = var.vnet_name
   address_prefixes     = var.bastion_subnet_address
 }
+
+# Bastion Service Subnet
+resource "azurerm_subnet" "bastion_service_subnet" {
+  name                 = var.bastion_service_subnet_name
+  resource_group_name  = var.rg_name
+  virtual_network_name = var.virutal_network_name # azurerm_virtual_network.vnet.name
+  address_prefixes     = var.bastion_service_address_prefixes
+}

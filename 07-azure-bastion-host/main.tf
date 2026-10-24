@@ -35,6 +35,11 @@ module "subnet" {
   # Bastion Subnet 
   bastion_subnet_name    = var.bastion_subnet_name
   bastion_subnet_address = var.bastion_subnet_address
+
+  # Bastion Service 
+  bastion_service_subnet_name      = var.bastion_service_subnet_name
+  virutal_network_name             = module.vnet.vnetwork_name
+  bastion_service_address_prefixes = var.bastion_service_address_prefixes
 }
 
 module "nsg" {

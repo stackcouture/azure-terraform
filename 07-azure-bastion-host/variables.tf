@@ -76,13 +76,25 @@ variable "bastion_subnet_address" {
   description = "Virtual Network Bastion Subnet Address Spaces"
 }
 
-# Bastion Host 
+# # Bastion Host 
+# variable "bastion_service_subnet_name" {
+#   description = "Bastion Service Subnet Name"
+#   default     = "AzureBastionSubnet"
+# }
+
+# variable "bastion_service_address_prefixes" {
+#   description = "Bastion Service Address Prefixes"
+#   default     = ["10.0.101.0/27"]
+# }
+
+# Bastion Service Subnet
 variable "bastion_service_subnet_name" {
-  description = "Bastion Service Subnet Name"
-  default     = "AzureBastionSubnet"
+  type        = string
+  description = "Bastion Service Subnet name"
 }
 
 variable "bastion_service_address_prefixes" {
-  description = "Bastion Service Address Prefixes"
-  default     = ["10.0.101.0/27"]
+  type        = list(string)
+  description = "Bastion Service Subnet Address Spaces"
 }
+
