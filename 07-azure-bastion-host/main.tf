@@ -62,3 +62,11 @@ module "network_interface" {
   rg_group_name        = module.resource_group.resource_group_name
   websubnet_id         = module.subnet.web_subnet_id
 }
+
+module "bastion_host_vm" {
+  source               = "./modules/bastion-host-vm"
+  resource_name_prefix = local.resource_name_prefix
+  rg_location          = module.resource_group.resource_group_location_name
+  rg_group_name        = module.resource_group.resource_group_name
+  bastion_subnet_id    = module.subnet.bastion_subnet_id
+}

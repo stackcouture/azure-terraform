@@ -36,3 +36,8 @@ output "bastion_subnet_id" {
   description = "Bastion Subnet ID"
   value       = module.subnet.bastion_subnet_id
 }
+
+output "bastion_host_linuxvm_public_ip_address" {
+  description = "Bastion Host Linux VM Public Address"
+  value       = module.bastion_host_vm.bastion_vm_ip_address
+}
