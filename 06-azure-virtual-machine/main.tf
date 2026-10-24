@@ -53,6 +53,9 @@ module "nsg" {
 
   bastion_subnet_id   = module.subnet.bastion_subnet_id
   bastion_subnet_name = var.bastion_subnet_name
+
+  web_linuxvm_nic_name = module.vm.web_linuxvm_nic_name
+  web_linuxvm_nic_id   = module.vm.web_linuxvm_nic_id
 }
 
 module "vm" {

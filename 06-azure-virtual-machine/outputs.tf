@@ -47,3 +47,7 @@ output "web_subnet_nsg_id" {
   description = "Web Subnet NSG ID"
   value       = module.nsg.web_subnet_nsg_id
 }
+
+output "web_linuxvm_nic_name" {
+  value = module.vm.web_linuxvm_nic_name
+}
