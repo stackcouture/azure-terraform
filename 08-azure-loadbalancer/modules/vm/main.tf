@@ -11,6 +11,9 @@ resource "azurerm_public_ip" "web_linuxvm_publicip" {
   allocation_method   = "Static"
   sku                 = "Standard"
   domain_name_label   = "app1-vm-${random_string.myrandom.id}"
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "azurerm_network_interface" "web_linuxvm_nic" {
@@ -22,7 +25,7 @@ resource "azurerm_network_interface" "web_linuxvm_nic" {
     name                          = "web-linuxvm-ip-1"
     subnet_id                     = var.websubnet_id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.web_linuxvm_publicip.id
+    # public_ip_address_id          = azurerm_public_ip.web_linuxvm_publicip.id
   }
 }
 
