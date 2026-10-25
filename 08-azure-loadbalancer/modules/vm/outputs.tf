@@ -27,3 +27,8 @@ output "web_linuxvm_virtual_machine_id" {
   description = "Web Linux Virtual Machine ID "
   value       = azurerm_linux_virtual_machine.web_linuxvm.id
 }
+
+output "web_linuxvm_nic_ip_configuration_name" {
+  description = "Web Linux VM NIC IP configuration name"
+  value       = azurerm_network_interface.web_linuxvm_nic.ip_configuration[0].name
+}

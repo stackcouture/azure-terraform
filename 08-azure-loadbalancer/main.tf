@@ -65,3 +65,13 @@ module "vm" {
   rg_group_name        = module.resource_group.resource_group_name
   websubnet_id         = module.subnet.web_subnet_id
 }
+
+module "lb" {
+  source                                = "./modules/lb"
+  resource_name_prefix                  = local.resource_name_prefix
+  rg_location                           = module.resource_group.resource_group_location_name
+  rg_group_name                         = module.resource_group.resource_group_name
+  common_tags                           = local.common_tags
+  web_linuxvm_nic_id                    = module.vm.web_linuxvm_nic_id
+  web_linuxvm_nic_ip_configuration_name = module.vm.web_linuxvm_nic_ip_configuration_name
+}
