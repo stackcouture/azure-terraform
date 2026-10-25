@@ -28,3 +28,7 @@ variable "web_linuxvm_nic_ip_configuration_name" {
   description = "Web Linux VM NIC Ip Configuration name"
 }
 
+variable "web_linuxvm_virtual_machine_id" {
+  type        = string
+  description = "Web Linux VM ID"
+}

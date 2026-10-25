@@ -42,7 +42,26 @@ resource "azurerm_lb_rule" "web_lb_rule_app1" {
 }
 
 resource "azurerm_network_interface_backend_address_pool_association" "web_nic_lb_associate" {
-  network_interface_id    = var.web_linuxvm_nic_id                    # azurerm_network_interface.web_linuxvm_nic.id 
-  ip_configuration_name   = var.web_linuxvm_nic_ip_configuration_name # azurerm_network_interface.web_linuxvm_nic.ip_configuration[0].name
+  network_interface_id    = var.web_linuxvm_nic_id
+  ip_configuration_name   = var.web_linuxvm_nic_ip_configuration_name
   backend_address_pool_id = azurerm_lb_backend_address_pool.web_lb_backend_address_pool.id
+}
+
+# Azure LB Inbound NAT Rule
+resource "azurerm_lb_nat_rule" "web_lb_inbound_nat_rule_22" {
+  depends_on                     = [var.web_linuxvm_virtual_machine_id] # [azurerm_linux_virtual_machine.web_linuxvm] # To effectively handle azurerm provider related dependency bugs during the destroy resources time
+  name                           = "ssh-1022-vm-22"
+  protocol                       = "Tcp"
+  frontend_port                  = 1022
+  backend_port                   = 22
+  frontend_ip_configuration_name = azurerm_lb.web_lb.frontend_ip_configuration[0].name
+  resource_group_name            = var.rg_group_name
+  loadbalancer_id                = azurerm_lb.web_lb.id
+}
+
+# Associate LB NAT Rule and VM Network Interface
+resource "azurerm_network_interface_nat_rule_association" "web_nic_nat_rule_associate" {
+  network_interface_id  = var.web_linuxvm_nic_id                    # azurerm_network_interface.web_linuxvm_nic.id 
+  ip_configuration_name = var.web_linuxvm_nic_ip_configuration_name # azurerm_network_interface.web_linuxvm_nic.ip_configuration[0].name 
+  nat_rule_id           = azurerm_lb_nat_rule.web_lb_inbound_nat_rule_22.id
 }

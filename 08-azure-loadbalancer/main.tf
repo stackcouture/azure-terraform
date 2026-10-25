@@ -74,4 +74,5 @@ module "lb" {
   common_tags                           = local.common_tags
   web_linuxvm_nic_id                    = module.vm.web_linuxvm_nic_id
   web_linuxvm_nic_ip_configuration_name = module.vm.web_linuxvm_nic_ip_configuration_name
+  web_linuxvm_virtual_machine_id        = module.vm.web_linuxvm_virtual_machine_id
 }
