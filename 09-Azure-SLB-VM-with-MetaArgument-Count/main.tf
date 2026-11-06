@@ -14,3 +14,22 @@ module "vnet" {
   rg_group_name        = module.resource_group.resource_group_name
   common_tags          = local.common_tags
 }
+
+module "subnet" {
+  source    = "./modules/subnet"
+  rg_name   = module.resource_group.resource_group_name
+  vnet_name = module.vnet.vnet_name
+
+  # Web Subnet
+  web_subnet_name    = var.web_subnet_name
+  web_subnet_address = var.web_subnet_address
+}
+
+module "nsg" {
+  source        = "./modules/nsg"
+  rg_location   = module.resource_group.resource_group_location_name
+  rg_group_name = module.resource_group.resource_group_name
+
+  subnet_id       = module.subnet.web_subnet_id
+  web_subnet_name = var.web_subnet_name
+}

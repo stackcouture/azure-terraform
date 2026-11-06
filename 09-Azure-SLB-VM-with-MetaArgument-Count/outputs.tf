@@ -12,3 +12,9 @@ output "vnet_guid" {
   description = "Virtual Network GUID"
   value       = module.vnet.vnet_guid
 }
+
+# Web Subnet Id 
+output "websubnet_id" {
+  description = "Web Subnet ID"
+  value       = module.subnet.web_subnet_id
+}
