@@ -17,3 +17,14 @@ variable "environment" {
   type        = string
   description = "Environment name"
 }
+
+# Virtual Network  
+variable "vnet_name" {
+  type        = string
+  description = "Virtual Network name"
+}
+
+variable "vnet_address_space" {
+  type        = list(string)
+  description = "Virtual Netowrk Address Space"
+}
