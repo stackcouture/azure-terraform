@@ -29,6 +29,7 @@ resource "azurerm_network_interface" "web_linuxvm_nic" {
   }
 }
 
+
 locals {
   webvm_custom_data = <<-CUSTOM_DATA
 #!/bin/bash
@@ -38,18 +39,21 @@ exec > >(tee -a /var/log/webvm-custom-data.log) 2>&1
 
 echo "Starting WebVM App1 setup..."
 
-# Update Azure RHUI client package first if needed.
-# This requires the Microsoft Azure RHUI repository to be accessible.
-dnf update -y --disablerepo='*' --enablerepo='rhui-microsoft-azure-rhel8'
+# Update Ubuntu packages
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -y
+apt-get upgrade -y
 
 # Install Apache
-dnf install -y httpd
-systemctl enable --now httpd
+apt-get install -y apache2 curl ufw
+
+# Enable and start Apache
+systemctl enable --now apache2
 
 # Configure Linux firewall
-systemctl enable --now firewalld
-firewall-cmd --permanent --add-service=http
-firewall-cmd --reload
+ufw allow OpenSSH
+ufw allow 80/tcp
+ufw --force enable
 
 # Create application directories
 mkdir -p /var/www/html/app1
@@ -71,22 +75,27 @@ EOF
 cat > /var/www/html/app1/index.html <<'EOF'
 <!DOCTYPE html>
 <html>
+<head>
+    <title>StackCouture App1</title>
+</head>
 <body style="background-color:rgb(250, 210, 210);">
-<h1>Welcome to StackCouture - WebVM APP-1</h1>
-<p>Terraform Demo</p>
-<p>Application Version: V1</p>
+    <h1>Welcome to StackCouture - WebVM APP-1</h1>
+    <p>Terraform Demo</p>
+    <p>Application Version: V1</p>
 </body>
 </html>
 EOF
 
-# Verify service and webpage
-systemctl is-active httpd
+# Set correct ownership
+chown -R www-data:www-data /var/www/html/app1
+
+# Verify Apache service and webpage
+systemctl is-active apache2
 curl -f http://localhost/
 
 echo "WebVM App1 setup completed successfully."
 CUSTOM_DATA
 }
-
 
 resource "azurerm_linux_virtual_machine" "web_linuxvm" {
   name                  = "${var.resource_name_prefix}-web-linuxvm"
@@ -104,9 +113,9 @@ resource "azurerm_linux_virtual_machine" "web_linuxvm" {
     storage_account_type = "Standard_LRS"
   }
   source_image_reference {
-    publisher = "RedHat"
-    offer     = "RHEL"
-    sku       = "83-gen2"
+    publisher = "Canonical"
+    offer     = "ubuntu-24_04-lts"
+    sku       = "server"
     version   = "latest"
   }
   custom_data = base64encode(local.webvm_custom_data)
