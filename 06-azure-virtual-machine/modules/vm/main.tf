@@ -6,8 +6,8 @@ resource "random_string" "myrandom" {
 
 resource "azurerm_public_ip" "web_linuxvm_publicip" {
   name                = "${var.resource_name_prefix}-web-linuxvm-publicip"
-  resource_group_name = var.rg_group_name 
-  location            = var.rg_location   
+  resource_group_name = var.rg_group_name
+  location            = var.rg_location
   allocation_method   = "Static"
   sku                 = "Standard"
   domain_name_label   = "app1-vm-${random_string.myrandom.id}"
@@ -20,7 +20,7 @@ resource "azurerm_network_interface" "web_linuxvm_nic" {
 
   ip_configuration {
     name                          = "web-linuxvm-ip-1"
-    subnet_id                     = var.websubnet_id 
+    subnet_id                     = var.websubnet_id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.web_linuxvm_publicip.id
   }

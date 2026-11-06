@@ -54,7 +54,7 @@ output "web_linuxvm_nic_name" {
 
 output "web_linuxvm_public_ip_address" {
   description = "Web Linux Virtual Machine Public IP"
-  value       = module.vm.web_linuxvm_public_ip_address 
+  value       = module.vm.web_linuxvm_public_ip_address
 }
 
 output "web_linuxvm_private_ip_address" {
@@ -64,10 +64,10 @@ output "web_linuxvm_private_ip_address" {
 
 output "web_linuxvm_virtual_machine_id_128bit" {
   description = "Web Linux Virtual Machine ID - 128-bit identifier"
-  value       = module.vm.web_linuxvm_virtual_machine_id_128bit 
+  value       = module.vm.web_linuxvm_virtual_machine_id_128bit
 }
 
 output "web_linuxvm_virtual_machine_id" {
   description = "Web Linux Virtual Machine ID "
-  value       = module.vm.web_linuxvm_virtual_machine_id 
+  value       = module.vm.web_linuxvm_virtual_machine_id
 }
