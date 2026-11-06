@@ -16,9 +16,9 @@ module "vnet" {
 }
 
 module "subnet" {
-  source    = "./modules/subnet"
-  rg_name   = module.resource_group.resource_group_name
-  vnet_name = "${local.resource_name_prefix}-${var.vnet_name}"
+  source  = "./modules/subnet"
+  rg_name = module.resource_group.resource_group_name
+  vnet_name = module.vnet.vnet_name
 
   # Web Subnet
   web_subnet_name    = var.web_subnet_name
