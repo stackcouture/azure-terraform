@@ -18,3 +18,14 @@ variable "rg_name" {
   type        = string
   description = "Resource Group Name"
 }
+
+# App Subnet Varaibles
+variable "app_subnet_name" {
+  type        = string
+  description = "App Subnet name"
+}
+
+variable "app_subnet_address" {
+  type        = list(string)
+  description = "App Subnet Address"
+}

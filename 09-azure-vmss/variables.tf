@@ -40,3 +40,14 @@ variable "web_subnet_address" {
   type        = list(string)
   description = "Virutal Network Web Subnet Address"
 }
+
+# App Subnet Varaibles
+variable "app_subnet_name" {
+  type        = string
+  description = "App Subnet name"
+}
+
+variable "app_subnet_address" {
+  type        = list(string)
+  description = "App Subnet Address"
+}
