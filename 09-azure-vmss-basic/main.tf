@@ -76,3 +76,12 @@ module "lb" {
   web_linuxvm_nic_ip_configuration_name = module.vm.web_linuxvm_nic_ip_configuration_name
   web_linuxvm_virtual_machine_id        = module.vm.web_linuxvm_virtual_machine_id
 }
+
+module "vmss" {
+  source                         = "./modules/vmss"
+  resource_name_prefix           = local.resource_name_prefix
+  rg_location                    = module.resource_group.resource_group_location_name
+  rg_group_name                  = module.resource_group.resource_group_name
+  websubnet_id                   = module.subnet.web_subnet_id
+  web_lb_backend_address_pool_id = module.lb.web_lb_backend_address_pool_id
+}

@@ -15,3 +15,8 @@ output "web_lb_frontend_ip_configuration" {
   description = "Web LB frontend_ip_configuration Block"
   value       = [azurerm_lb.web_lb.frontend_ip_configuration]
 }
+
+output "web_lb_backend_address_pool_id" {
+  description = "Web Load Balancer Backend Address Pool ID"
+  value       = azurerm_lb_backend_address_pool.web_lb_backend_address_pool.id
+}

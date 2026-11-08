@@ -73,3 +73,8 @@ output "web_lb_frontend_ip_configuration" {
   description = "Web LB frontend_ip_configuration Block"
   value       = module.lb.web_lb_frontend_ip_configuration
 }
+
+output "web_vmss_id" {
+  description = "Web Virtual Machine Scale Set ID"
+  value       = module.vmss.web_vmss_id
+}

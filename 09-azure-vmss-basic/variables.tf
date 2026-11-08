@@ -75,3 +75,9 @@ variable "bastion_subnet_address" {
   type        = list(string)
   description = "Virtual Network Bastion Subnet Address Spaces"
 }
+
+# Linux VM Input Variables Placeholder file.
+variable "web_vmss_nsg_inbound_ports" {
+  description = "Web VMSS NSG Inbound Ports"
+  type        = list(string)
+}
