@@ -41,8 +41,8 @@ resource "azurerm_lb_rule" "web_lb_rule_app1" {
   loadbalancer_id                = azurerm_lb.web_lb.id
 }
 
-resource "azurerm_network_interface_backend_address_pool_association" "web_nic_lb_associate" {
-  network_interface_id    = var.web_linuxvm_nic_id
-  ip_configuration_name   = var.web_linuxvm_nic_ip_configuration_name
-  backend_address_pool_id = azurerm_lb_backend_address_pool.web_lb_backend_address_pool.id
-}
+# resource "azurerm_network_interface_backend_address_pool_association" "web_nic_lb_associate" {
+#   network_interface_id    = var.web_linuxvm_nic_id
+#   ip_configuration_name   = var.web_linuxvm_nic_ip_configuration_name
+#   backend_address_pool_id = azurerm_lb_backend_address_pool.web_lb_backend_address_pool.id
+# }
