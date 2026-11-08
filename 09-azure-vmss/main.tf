@@ -36,3 +36,21 @@ module "subnet" {
   bastion_subnet_name    = var.bastion_subnet_name
   bastion_subnet_address = var.bastion_subnet_address
 }
+
+module "nsg" {
+  source        = "./modules/nsg"
+  rg_location   = module.resource_group.resource_group_location_name
+  rg_group_name = module.resource_group.resource_group_name
+
+  subnet_id       = module.subnet.web_subnet_id
+  web_subnet_name = var.web_subnet_name
+
+  app_subnet_id   = module.subnet.app_subnet_id
+  app_subnet_name = var.app_subnet_name
+
+  db_subnet_id   = module.subnet.db_subnet_id
+  db_subnet_name = var.db_subnet_name
+
+  bastion_subnet_id   = module.subnet.bastion_subnet_id
+  bastion_subnet_name = var.bastion_subnet_name
+}
