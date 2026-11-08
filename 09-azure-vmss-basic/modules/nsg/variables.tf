@@ -50,3 +50,13 @@ variable "bastion_subnet_id" {
   type        = string
   description = "Bastion Subnet ID"
 }
+
+variable "web_linuxvm_nic_name" {
+  type        = string
+  description = "Web Linux VM NIC Name"
+}
+
+variable "web_linuxvm_nic_id" {
+  type        = string
+  description = "Web linux VM NIC Id"
+}

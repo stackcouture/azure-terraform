@@ -36,3 +36,23 @@ output "bastion_subnet_id" {
   description = "Bastion Subnet ID"
   value       = module.subnet.bastion_subnet_id
 }
+
+output "web_linuxvm_public_ip_address" {
+  description = "Web Linux Virtual Machine Public IP"
+  value       = module.vm.web_linuxvm_public_ip_address
+}
+
+output "web_linuxvm_private_ip_address" {
+  description = "Web Linux Virtual Machine Private IP"
+  value       = module.vm.web_linuxvm_private_ip_address
+}
+
+output "web_linuxvm_virtual_machine_id_128bit" {
+  description = "Web Linux Virtual Machine ID - 128-bit identifier"
+  value       = module.vm.web_linuxvm_virtual_machine_id_128bit
+}
+
+output "web_linuxvm_virtual_machine_id" {
+  description = "Web Linux Virtual Machine ID "
+  value       = module.vm.web_linuxvm_virtual_machine_id
+}
