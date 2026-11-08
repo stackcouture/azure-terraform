@@ -27,4 +27,8 @@ module "subnet" {
   # App Subnet 
   app_subnet_name    = var.app_subnet_name
   app_subnet_address = var.app_subnet_address
+
+  # DB Subnet
+  db_subnet_name    = var.db_subnet_name
+  db_subnet_address = var.db_subnet_address
 }
