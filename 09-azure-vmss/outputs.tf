@@ -31,3 +31,8 @@ output "dbsubnet_id" {
   description = "DB Subnet ID"
   value       = module.subnet.db_subnet_id
 }
+
+output "bastion_subnet_id" {
+  description = "Bastion Subnet ID"
+  value       = module.subnet.bastion_subnet_id
+}

@@ -41,3 +41,15 @@ variable "db_subnet_address" {
   type        = list(string)
   description = "Virtual Network Database Subnet Address Spaces"
 }
+
+# Bastion Subnet Name
+variable "bastion_subnet_name" {
+  type        = string
+  description = "Virtual Network Bastion Subnet Name"
+}
+
+# Bastion Subnet Address Space
+variable "bastion_subnet_address" {
+  type        = list(string)
+  description = "Virtual Network Bastion Subnet Address Spaces"
+}

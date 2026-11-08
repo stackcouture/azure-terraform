@@ -9,3 +9,7 @@ output "app_subnet_id" {
 output "db_subnet_id" {
   value = azurerm_subnet.db_subnet.id
 }
+
+output "bastion_subnet_id" {
+  value = azurerm_subnet.bastion_subnet.id
+}
