@@ -86,3 +86,16 @@ output "sa_primary_web_host" {
 output "sa_ccount_name" {
   value = module.storage_account.storage_account_name
 }
+
+# NAT-GW Output Values 
+# NAT Gateway ID
+output "nat_gw_id" {
+  description = "Azure NAT Gateway ID"
+  value       = module.nat_gw.nat_gw_id
+}
+
+# NAT Gateway Public IP
+output "nat_gw_public_ip" {
+  description = "Azure NAT Gateway Public IP Address"
+  value       = module.nat_gw.nat_gw_public_ip
+}

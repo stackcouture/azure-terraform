@@ -82,3 +82,11 @@ module "storage_account" {
   static_website_index_document     = var.static_website_index_document
   static_website_error_404_document = var.static_website_error_404_document
 }
+
+module "nat_gw" {
+  source               = "./modules/nat-gw"
+  rg_location          = module.resource_group.resource_group_location_name
+  rg_group_name        = module.resource_group.resource_group_name
+  resource_name_prefix = local.resource_name_prefix
+  appsubnet_id         = module.subnet.app_subnet_id
+}
