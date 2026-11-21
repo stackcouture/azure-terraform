@@ -68,3 +68,21 @@ output "web_lb_frontend_ip_configuration" {
 #   description = "Web Virtual Machine Scale Set ID"
 #   value       = module.vmss.web_vmss_id
 # }
+
+# Storage Account Output Values 
+output "sa_primary_access_key" {
+  value     = module.storage_account.storage_account_primary_access_key
+  sensitive = true
+}
+
+output "sa_primary_web_endpoint" {
+  value = module.storage_account.storage_account_primary_web_endpoint
+}
+
+output "sa_primary_web_host" {
+  value = module.storage_account.storage_account_primary_web_host
+}
+
+output "sa_ccount_name" {
+  value = module.storage_account.storage_account_name
+}

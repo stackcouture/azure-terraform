@@ -70,3 +70,15 @@ module "lb" {
   rg_group_name        = module.resource_group.resource_group_name
   common_tags          = local.common_tags
 }
+
+module "storage_account" {
+  source                            = "./modules/storage-account"
+  rg_location                       = module.resource_group.resource_group_location_name
+  rg_group_name                     = module.resource_group.resource_group_name
+  storage_account_name              = var.storage_account_name
+  storage_account_tier              = var.storage_account_tier
+  storage_account_replication_type  = var.storage_account_replication_type
+  storage_account_kind              = var.storage_account_kind
+  static_website_index_document     = var.static_website_index_document
+  static_website_error_404_document = var.static_website_error_404_document
+}
