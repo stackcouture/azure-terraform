@@ -62,3 +62,11 @@ module "bastion_host_vm" {
   rg_group_name        = module.resource_group.resource_group_name
   bastion_subnet_id    = module.subnet.bastion_subnet_id
 }
+
+module "lb" {
+  source               = "./modules/lb"
+  resource_name_prefix = local.resource_name_prefix
+  rg_location          = module.resource_group.resource_group_location_name
+  rg_group_name        = module.resource_group.resource_group_name
+  common_tags          = local.common_tags
+}
